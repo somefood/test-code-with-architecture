@@ -26,7 +26,7 @@ public class UserJpaRepositoryTest {
     void findByIdAndStatus_로_유저_데이터를_찾아올_수_있다() {
         // given
         // when
-        Optional<UserEntity> result = userJpaRepository.findByIdAndStatus(1, UserStatus.ACTIVE);
+        Optional<User> result = userJpaRepository.findByIdAndStatus(1, UserStatus.ACTIVE);
 
         // then
         assertThat(result.isPresent()).isTrue();
@@ -36,7 +36,7 @@ public class UserJpaRepositoryTest {
     void findByEmailAndStatus_로_유저_데이터를_찾아올_수_있다() {
         // given
         // when
-        Optional<UserEntity> result = userJpaRepository.findByEmailAndStatus("test@naver.com", UserStatus.ACTIVE);
+        Optional<User> result = userJpaRepository.findByEmailAndStatus("test@naver.com", UserStatus.ACTIVE);
 
         // then
         assertThat(result.isPresent()).isTrue();
@@ -46,7 +46,7 @@ public class UserJpaRepositoryTest {
     void findByIdAndStatus_는_데이터가_없으면_Optional_empty_를_내려준다() {
         // given
         // when
-        Optional<UserEntity> result = userJpaRepository.findByIdAndStatus(1, UserStatus.PENDING);
+        Optional<User> result = userJpaRepository.findByIdAndStatus(1, UserStatus.PENDING);
 
         // then
         assertThat(result.isEmpty()).isTrue();
@@ -56,7 +56,7 @@ public class UserJpaRepositoryTest {
     void findByEmailAndStatus_는_데이터가_없으면_Optional_empty_를_내려준다() {
         // given
         // when
-        Optional<UserEntity> result = userJpaRepository.findByEmailAndStatus("test@naver.com", UserStatus.PENDING);
+        Optional<User> result = userJpaRepository.findByEmailAndStatus("test@naver.com", UserStatus.PENDING);
 
         // then
         assertThat(result.isEmpty()).isTrue();

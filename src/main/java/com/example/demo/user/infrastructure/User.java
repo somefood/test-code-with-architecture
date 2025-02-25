@@ -16,7 +16,7 @@ import lombok.Setter;
 @Setter
 @Entity
 @Table(name = "users")
-public class UserEntity {
+public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -40,4 +40,28 @@ public class UserEntity {
 
     @Column(name = "last_login_at")
     private Long lastLoginAt;
+
+    public static User fromModel(com.example.demo.user.domain.User user) {
+        User userEntity = new User();
+        userEntity.id = user.getId();
+        userEntity.email = user.getEmail();
+        userEntity.nickname = user.getNickname();
+        userEntity.address = user.getAddress();
+        userEntity.certificationCode = user.getCertificationCode();
+        userEntity.status = user.getStatus();
+        userEntity.lastLoginAt = user.getLastLoginAt();
+        return userEntity;
+    }
+    
+    public com.example.demo.user.domain.User toModel() {
+        return com.example.demo.user.domain.User.builder()
+                .id(id)
+                .email(email)
+                .nickname(nickname)
+                .address(address)
+                .certificationCode(certificationCode)
+                .status(status)
+                .lastLoginAt(lastLoginAt)
+                .build();
+    }
 }
