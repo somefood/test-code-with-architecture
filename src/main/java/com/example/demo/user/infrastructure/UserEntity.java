@@ -1,5 +1,6 @@
 package com.example.demo.user.infrastructure;
 
+import com.example.demo.user.domain.User;
 import com.example.demo.user.domain.UserStatus;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -16,7 +17,7 @@ import lombok.Setter;
 @Setter
 @Entity
 @Table(name = "users")
-public class User {
+public class UserEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -41,8 +42,8 @@ public class User {
     @Column(name = "last_login_at")
     private Long lastLoginAt;
 
-    public static User fromModel(com.example.demo.user.domain.User user) {
-        User userEntity = new User();
+    public static UserEntity from(User user) {
+        UserEntity userEntity = new UserEntity();
         userEntity.id = user.getId();
         userEntity.email = user.getEmail();
         userEntity.nickname = user.getNickname();
@@ -53,8 +54,8 @@ public class User {
         return userEntity;
     }
     
-    public com.example.demo.user.domain.User toModel() {
-        return com.example.demo.user.domain.User.builder()
+    public User toModel() {
+        return User.builder()
                 .id(id)
                 .email(email)
                 .nickname(nickname)

@@ -1,10 +1,8 @@
 package com.example.demo.user.domain;
 
 import com.example.demo.common.exception.CertificationCodeNotMatchedException;
-import com.example.demo.common.service.port.UuidHolder;
 import com.example.demo.mock.TestClockHolder;
 import com.example.demo.mock.TestUuidHolder;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
